@@ -1,7 +1,6 @@
 # Checklist.love 侦爱清单
-Checklist for love. 我在纠结是叫侦爱呢，还是叫斟爱？
-
-基于Github Issue的清单小应用。
+这是一个基于Github Issue的清单小应用。  
+它能教你怎样查对方的手机，怎么查、在哪查。  
 
 ## 配置
 ```html
