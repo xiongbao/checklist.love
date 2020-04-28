@@ -1,4 +1,4 @@
-# Checklist.love 侦爱清单
+# [Checklist.love](https://checklist.love) 侦爱清单
 这是一个基于Github Issue的清单小应用。  
 它能教你怎样查对方的手机，怎么查、在哪查。  
 
