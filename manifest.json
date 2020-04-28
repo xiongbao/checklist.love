@@ -1,0 +1,14 @@
+{
+    "name": "侦爱清单",
+    "short_name": "侦爱清单",
+    "display": "standalone",
+    "orientation": "any",
+    "start_url": ".",
+    "background_color": "#f7f8fe",
+    "theme_color": "#f37587",
+    "icons": [{
+        "src": "/assets/img/logo.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }]
+}
