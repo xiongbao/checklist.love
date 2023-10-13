@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+    <meta name="theme-color" content="#595f69" id="themeColor">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="apple-touch-icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/images/logo.png">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="manifest" href="/manifest.json">
+    <title>侦爱清单</title>
+    <meta name="description" content="骗不骗，清单来验；真不真，清单辨认。"/>
+</head>
+
+<body>
+
+    <div class="index">
+        <header class="head">
+            <div class="inner">
+                <h1 class="siteinfo">
+                    <i class="logo"></i><span class="name">侦爱清单</span>
+                </h1>
+                <div class="siteintro">
+                    <h2>骗你，<span>我是小猪</span></h2>
+                    <p><span>骗不骗，清单验；</span><span>真不真，清单认。</span></p>
+                    <a class="btn-new" target="_blank" href="https://github.com/xiongbao/checklist.love/discussions">我要补充</a>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="inner">
+                <div class="posts">
+                    {{range .Posts.Nodes}}
+                        {{ if .Category.Id | isExisted }}
+                    <a class="item" href="/post/{{.Number}}/{{.Title}}">
+                        <h2 class="post-title">{{ .Title}}</h2>
+                        <p class="post-tags">
+                            {{range .Lables.Nodes}}
+                            <span class="tag">{{.Name}}</span>
+                            {{end}}
+                        </p>
+                    </a>
+                        {{ end }}
+                    {{end}}
+                </div>
+            </div>
+            <div class="page-nav">
+                {{ if .Posts.PageInfo.HasPreviousPage }}
+                <a class="page-link prev"
+                    href="/?pre={{.Posts.PageInfo.StartCursor}}">
+                    <span class="ico"></span><span class="txt">Prev</span>
+                </a>
+                {{ end }}
+                {{ if .Posts.PageInfo.HasNextPage}}
+                <a class="page-link next"
+                    href="/?next={{.Posts.PageInfo.EndCursor}}">
+                    <span class="txt">Next</span><span class="ico"></span>
+                </a>
+                {{ end }}  
+            </div>
+        </main>
+        {{template "footer.html"}}
+    </div>
+</body>
+
+</html>

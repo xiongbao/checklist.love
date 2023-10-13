@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+    <meta name="theme-color" content="#595f69" id="themeColor">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="apple-touch-icon" type="image/png" href="/assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="/assets/images/logo.png">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="manifest" href="/manifest.json">
+    <title>{{ .Post.Title }}</title>
+    <meta property="og:description" content="{{  .Post.BodyText | previewContent}}" />
+    <meta property="og:title" content="{{  .Post.Title }}" />
+</head>
+
+<body>
+
+    <div class="index">
+        <header class="head">
+            <div class="inner">
+                <h1 class="siteinfo">
+                    <i class="logo"></i><span class="name">侦爱清单</span>
+                </h1>
+                <article class="post-detail">
+                    <h1 class="post-title">{{ .Post.Title }}</h1>
+                    <p class="post-tags">
+                        {{range .Post.Lables.Nodes}}
+                            <span class="tag">{{.Name}}</span>
+                        {{end}}
+                    </p>
+                </article>
+            </div>
+        </header>
+        <main class="main">
+            <script src="https://giscus.app/client.js"
+                data-repo="{{$.Repo}}"
+                data-repo-id="{{$.RepoId}}"
+                data-mapping="number"
+                data-term="{{.Post.Number}}"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="zh-CN"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </main>
+        {{template "footer.html"}}
+    </div>
+</body>
+
+</html>

@@ -11,7 +11,7 @@ body {
   font-size: 16px;
   margin: 0;
   background-color: #f7f8fe;
-  background-image: url(img/bg.png);
+  background-image: url(../images/bg.png);
   background-position: 50% -200px;
   background-size: 100% auto;
   color: #03081A;
@@ -24,7 +24,7 @@ a:visited {
 }
 .detail .head {
   background-color: #fff;
-  background-image: url(img/bg-detail.png);
+  background-image: url(../images/bg-detail.png);
   background-repeat: repeat-x;
   background-size: auto 100%;
   border-bottom: 1px solid #e5e5ef;
