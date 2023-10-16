@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="/assets/images/logo.png">
     <link rel="apple-touch-icon" type="image/png" href="/assets/images/logo.png">
     <link rel="icon" type="image/png" sizes="144x144" href="/assets/images/logo.png">
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css?2">
     <link rel="manifest" href="/manifest.json">
     <title>侦爱清单</title>
     <meta name="description" content="骗不骗，清单来验；真不真，清单辨认。"/>
@@ -27,7 +27,7 @@
                 <div class="siteintro">
                     <h2>骗你，<span>我是小猪</span></h2>
                     <p><span>骗不骗，清单验；</span><span>真不真，清单认。</span></p>
-                    <a class="btn-new" target="_blank" href="https://github.com/xiongbao/checklist.love/discussions">我要补充</a>
+                    <a class="btn" target="_blank" href="https://github.com/xiongbao/checklist.love/discussions/new?category=%E6%8A%95%E7%A8%BF">我要补充</a>
                 </div>
             </div>
         </header>
@@ -36,7 +36,7 @@
                 <div class="posts">
                     {{range .Posts.Nodes}}
                         {{ if .Category.Id | isExisted }}
-                    <a class="item" href="/post/{{.Number}}/{{.Title}}">
+                    <a class="item" href="/post/{{.Number}}">
                         <h2 class="post-title">{{ .Title}}</h2>
                         <p class="post-tags">
                             {{range .Lables.Nodes}}
@@ -47,20 +47,20 @@
                         {{ end }}
                     {{end}}
                 </div>
-            </div>
-            <div class="page-nav">
-                {{ if .Posts.PageInfo.HasPreviousPage }}
-                <a class="page-link prev"
-                    href="/?pre={{.Posts.PageInfo.StartCursor}}">
-                    <span class="ico"></span><span class="txt">Prev</span>
-                </a>
-                {{ end }}
-                {{ if .Posts.PageInfo.HasNextPage}}
-                <a class="page-link next"
-                    href="/?next={{.Posts.PageInfo.EndCursor}}">
-                    <span class="txt">Next</span><span class="ico"></span>
-                </a>
-                {{ end }}  
+                <div class="page-nav">
+                    {{ if .Posts.PageInfo.HasPreviousPage }}
+                    <a class="btn prev"
+                        href="/?pre={{.Posts.PageInfo.StartCursor}}">
+                        <span class="ico"></span><span class="txt">Prev</span>
+                    </a>
+                    {{ end }}
+                    {{ if .Posts.PageInfo.HasNextPage}}
+                    <a class="btn next"
+                        href="/?next={{.Posts.PageInfo.EndCursor}}">
+                        <span class="txt">Next</span><span class="ico"></span>
+                    </a>
+                    {{ end }}  
+                </div>
             </div>
         </main>
         {{template "footer.html"}}

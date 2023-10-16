@@ -19,12 +19,12 @@
 
 <body>
 
-    <div class="index">
+    <div class="detail">
         <header class="head">
             <div class="inner">
-                <h1 class="siteinfo">
+                <a class="siteinfo" href="/">
                     <i class="logo"></i><span class="name">侦爱清单</span>
-                </h1>
+                </a>
                 <article class="post-detail">
                     <h1 class="post-title">{{ .Post.Title }}</h1>
                     <p class="post-tags">
@@ -36,20 +36,22 @@
             </div>
         </header>
         <main class="main">
-            <script src="https://giscus.app/client.js"
-                data-repo="{{$.Repo}}"
-                data-repo-id="{{$.RepoId}}"
-                data-mapping="number"
-                data-term="{{.Post.Number}}"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="top"
-                data-theme="preferred_color_scheme"
-                data-lang="zh-CN"
-                data-loading="lazy"
-                crossorigin="anonymous"
-                async>
-            </script>
+            <div class="inner">
+                <script src="https://giscus.app/client.js"
+                    data-repo="{{$.Repo}}"
+                    data-repo-id="{{$.RepoId}}"
+                    data-mapping="number"
+                    data-term="{{.Post.Number}}"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="top"
+                    data-theme="preferred_color_scheme"
+                    data-lang="zh-CN"
+                    data-loading="lazy"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+            </div>
         </main>
         {{template "footer.html"}}
     </div>

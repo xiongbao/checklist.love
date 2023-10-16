@@ -68,20 +68,22 @@ a:visited {
   font-size: 0.32rem;
   color: #878B99;
 }
-.head .btn-new {
-  margin: 0.4rem 0 0;
+.btn, .btn:visited {
   display: block;
   border-radius: 0.5rem;
   background-color: #6C6DE7;
-  font-size: 0.24rem;
-  line-height: 0.44rem;
-  width: 1.6rem;
   text-align: center;
   color: #fff;
   box-shadow: 0 10px 30px 0 rgba(75, 103, 249, 0.35);
 }
-.head .btn-new:hover {
+.btn:hover {
   background-color: #5455ea;
+}
+.head .btn {
+  margin: 0.4rem 0 0;
+  font-size: 0.24rem;
+  line-height: 0.44rem;
+  width: 1.6rem;
 }
 .main .inner {
   max-width: 960px;
@@ -138,58 +140,19 @@ a:visited {
   font-size: 0.56rem;
   font-weight: 700;
 }
-.comments .item {
+.page-nav {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  position: relative;
-  margin: 0 0 0.3rem;
-  padding: 0.2rem 0.3rem;
-  background-color: #fff;
-  border-radius: 0.1rem;
-  box-shadow: 0 10px 30px -10px rgba(112, 135, 178, 0.2);
+  gap: .15rem;
 }
-.comments .item:hover {
-  box-shadow: 0 10px 30px -10px rgba(213, 50, 113, 0.4);
-}
-.comment-hd {
-  font-weight: normal;
-  margin: 0;
-}
-.comments .userinfo .avatar {
-  width: 25px;
-  height: 25px;
-  border-radius: 100%;
-  object-fit: cover;
-  vertical-align: middle;
-}
-.comments .userinfo .username {
-  display: inline-block;
-  vertical-align: middle;
-}
-.comments .published {
-  color: #878b99;
-}
-.action {
-  display: flex;
-  justify-content: center;
-  padding: 0 0 0.3rem;
-}
-.action a {
-  width: 2rem;
-  border-radius: 2rem;
-  height: 0.5rem;
-  line-height: 0.5rem;
-  text-align: center;
-  font-size: 0.18rem;
-  margin: 0 0.15rem;
-  background-color: #fff;
-  box-shadow: 0 10px 30px -10px rgba(112, 135, 178, 0.2);
-}
-.action a:hover {
-  box-shadow: 0 10px 30px -10px rgba(75, 103, 249, 0.35);
+.page-nav .btn {
+  font-size: .12rem;
+  padding: .08rem .1rem;
+  text-transform: uppercase;
 }
 .foot {
+  margin: .5rem 0 0;
   padding: 0 0 0.3rem;
   text-align: center;
 }
@@ -200,72 +163,6 @@ a:visited {
 .copyright a {
   color: #5455ea;
   font-weight: 700;
-}
-.hide {
-  display: none;
-}
-.rmBackGround {
-  background-image: none;
-}
-#loader {
-  text-align: center;
-  position: fixed;
-  z-index: 3;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.95);
-}
-.loading #loader {
-  opacity: 1;
-  visibility: visible;
-}
-.loading #loader div {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  vertical-align: middle;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #fff;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-}
-.loading #loader div:before {
-  content: '';
-  width: 26px;
-  height: 26px;
-  display: block;
-  margin: 8px auto 0;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-  -webkit-animation: loading 0.5s linear forwards infinite;
-  animation: loading 0.5s linear forwards infinite;
-  border-top: 4px solid #0089fa;
-  border-right: 4px solid #ff002b;
-  border-bottom: 4px solid #ffa900;
-  border-left: 4px solid #00a753;
-}
-.loading #loader:after {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-}
-@keyframes loading {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes loading {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
 }
 @media (orientation: portrait) and (max-width: 750px) {
   body {

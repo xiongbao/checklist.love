@@ -36,7 +36,7 @@ type PageQuery struct {
 
 type PostQuery struct {
 	Id    uint64 `uri:"id" binding:"required"`
-	Title string `uri:"title" binding:"required"`
+	Title string `uri:"title"`
 }
 
 type PureConfig struct {
@@ -200,12 +200,17 @@ func GenerateFeed(c *gin.Context) {
 	}
 
 	for _, disdiscussion := range discussions.Nodes {
+		body := []rune(disdiscussion.Body)
+		descriptionLength := 200
+		if (descriptionLength > len(body)) {
+			descriptionLength = len(body)
+		}
 		feed.Items = append(feed.Items, &feeds.Item{
 			Title:       string(disdiscussion.Title),
-			Description: string([]rune(disdiscussion.Body)[:200]),
+			Description: string(body[:descriptionLength]),
 			Author:      &feeds.Author{Name: config.Website.Name, Email: config.Website.Email},
 			Created:     disdiscussion.CreatedAt.Time,
-			Link:        &feeds.Link{Href: fmt.Sprintf("%s/post/%d/%s", config.Website.Host, disdiscussion.Number, disdiscussion.Title)},
+			Link:        &feeds.Link{Href: fmt.Sprintf("%s/post/%d", config.Website.Host, disdiscussion.Number)},
 		})
 	}
 
@@ -218,9 +223,10 @@ func main() {
 	r.SetFuncMap(funcMap)
 	r.LoadHTMLGlob("templates/**/*")
 	r.Static("/assets", "./assets")
+	r.StaticFile("/manifest.json", "./templates/manifest.json")
 	r.GET("/", cache.CacheByRequestURI(memoryCache, 30*time.Second), FetchPosts)
 	r.GET("/category/:category_id/:category_name", cache.CacheByRequestURI(memoryCache, 30*time.Second), FetchPosts)
-	r.GET("/post/:id/:title", cache.CacheByRequestURI(memoryCache, 1*time.Hour), FetchPost)
+	r.GET("/post/:id", cache.CacheByRequestURI(memoryCache, 1*time.Hour), FetchPost)
 	r.GET("/atom.xml", cache.CacheByRequestURI(memoryCache, 24*time.Hour), GenerateFeed)
 	r.GET("/404", func(ctx *gin.Context) {
 		ctx.HTML(http.StatusOK, "error.html", nil)
