@@ -96,6 +96,9 @@ var funcMap = template.FuncMap{
 		}
 		return false
 	},
+	"now": func(format string) string {
+		return time.Now().Format(format)
+	},
 }
 
 func FetchPosts(c *gin.Context) {
